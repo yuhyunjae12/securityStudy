@@ -18,5 +18,11 @@
 				ID=#{ username}
 		]]>
 	</select>
+	
+	<insert id="insertUser" parameterType="HashMap">
+			INSERT INTO
+				members
+				values (nextval('membersseq'),#{id},#{pw},'ROLE_USER',#{name} );
+	</insert>
 
 </mapper>

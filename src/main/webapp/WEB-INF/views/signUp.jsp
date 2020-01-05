@@ -10,16 +10,17 @@
 </head>
 <body>
 
-<div>로그인 페이지</div>
+<div>회원 가입</div>
 
-	<form:form action="/login" method="POST">
-		<input type="text" name="id" />
-		<input type="text" name="pw"/>
-		<input type="submit" value="로그인" />
+	<form:form action="/signUp" method="POST">
+		아아디 : <input type="text" name="id" />
+		<br/>
+		비빌번호 : <input type="text" name="pw"/>
+		<br/>
+		이름 : <input type="text" name="name"/>
+		<input type="submit" value="가입" />
 		<sec:csrfInput />
 	</form:form>
-	
-	<a href="/signUpForm">회원가입</a>
 
 </body>
 	<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>

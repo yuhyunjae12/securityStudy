@@ -1,6 +1,7 @@
 package com.my.res.controller;
 
 
+import java.util.HashMap;
 import java.util.Map;
 
 import javax.servlet.http.HttpSession;
@@ -12,6 +13,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.my.res.dao.MembersDao;
 import com.my.res.service.MembersService;
@@ -48,6 +50,17 @@ public class MainController {
 	public String loginError(){
 		logger.info("login Error.....");
 		return "loginError";
+	}
+	
+	@GetMapping( value = "/signUpForm")
+	public String signUpForm() {
+		return "signUp";
+	}
+	
+	@PostMapping( value = "/signUp")
+	public String signUp(@RequestParam HashMap<String, Object> map) {
+		int res = membersService.insertMembers(map);
+		return "redirect:/";
 	}
 	
 }
