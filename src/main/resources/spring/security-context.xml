@@ -15,12 +15,16 @@
 		<security:form-login 
 			login-processing-url="/login"
 			login-page="/"
-			default-target-url="/loginSuccess"
 			username-parameter="id"
 			password-parameter="pw"
 			authentication-failure-handler-ref="loginFailureHandler"
 		    authentication-success-handler-ref="loginSuccessHandler"
 			 />
+		
+		<security:session-management invalid-session-url="/login">
+			<security:concurrency-control max-sessions="1" expired-url="/login" />
+		</security:session-management>	 
+		
 		<security:logout 
 			logout-url="/logout"
 			logout-success-url="/"

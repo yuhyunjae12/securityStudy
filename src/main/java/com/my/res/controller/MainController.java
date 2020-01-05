@@ -9,6 +9,8 @@ import javax.servlet.http.HttpSession;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpRequest;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -33,8 +35,12 @@ public class MainController {
 	@GetMapping(value = "/loginSuccess")
 	public String loginSuccess(Model model) {
 		logger.info("login Sucess.....");
-		model.addAttribute("list", membersService.getMembersList());
 		
+		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        String id = auth.getName();
+        
+        logger.info("login user id ....." + id);
+
 		return "loginSuccess";
 		
 	}

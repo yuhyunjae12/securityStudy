@@ -16,6 +16,9 @@
 </head>
 <body>
 
+<div>이름 : ${sessionScope.SPRING_SECURITY_CONTEXT.authentication.principal}</div>
+<div>권한 : ${sessionScope.SPRING_SECURITY_CONTEXT.authentication.authorities}</div>
+
 <div id="map"></div>
 
 <div id="info"></div>
@@ -59,7 +62,7 @@
 	});
 
 	var map = new ol.Map({
-	    layers: [defaultLayer,wmsLayer],
+	    layers: [wmsLayer],
 	    target: 'map',
 	    view: view
 	});
